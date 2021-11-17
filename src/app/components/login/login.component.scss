@@ -1,0 +1,168 @@
+.login {
+  &__container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: linear-gradient(
+      rgba(56, 139, 253, 0.1),
+      rgba(56, 139, 253, 0.1)
+    );
+  }
+
+  &__title {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+  }
+
+  &__input-container {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  &__invalid {
+    color: #03e9f4;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+    margin-top: 5px;
+  }
+
+  &__input:focus ~ &__label,
+  &__input:valid ~ &__label {
+    color: #03e9f4;
+    font-size: 12px;
+    transform: translateY(-20px);
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background: transparent !important;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+
+    &:hover {
+      background: #03e9f4;
+      color: #fff;
+      box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+        0 0 100px #03e9f4;
+    }
+  }
+
+  &__buton-animation {
+    position: absolute;
+    display: block;
+
+    &--1 {
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #03e9f4);
+      animation: animationOne 1s linear infinite;
+    }
+
+    &--2 {
+      top: -100%;
+      right: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, #03e9f4);
+      animation: animationTwo 1s linear infinite;
+      animation-delay: 0.25s;
+    }
+
+    &--3 {
+      bottom: 0;
+      right: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(270deg, transparent, #03e9f4);
+      animation: animationThree 1s linear infinite;
+      animation-delay: 0.5s;
+    }
+
+    &--4 {
+      bottom: -100%;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(360deg, transparent, #03e9f4);
+      animation: animationFour 1s linear infinite;
+      animation-delay: 0.75s;
+    }
+  }
+}
+
+@keyframes animationOne {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+
+@keyframes animationTwo {
+  0% { top: -100%; }
+  50%, 100% { top: 100%; }
+}
+
+@keyframes animationThree {
+  0% { right: -100%; }
+  50%, 100% { right: 100%; }
+}
+
+@keyframes animationFour {
+  0% { bottom: -100%; }
+  50%, 100% { bottom: 100%; }
+}

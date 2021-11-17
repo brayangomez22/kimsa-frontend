@@ -1,0 +1,30 @@
+<section class="login__container">
+  <div class="login__content">
+    <h2 class="login__title">Login</h2>
+    <form class="login__form" [formGroup]="form" (ngSubmit)="save()">
+      <div class="login__input-container">
+        <div>
+          <input class="login__input" type="text" required formControlName="email" />
+          <label class="login__label">Correo</label>
+        </div>
+        <span class="login__invalid" *ngIf="emailInvalid">Por favor, ingresa un correo válido</span>
+      </div>
+
+      <div class="login__input-container">
+        <div>
+          <input class="login__input" type="password" required formControlName="password" />
+          <label class="login__label">Contraseña</label>
+        </div>
+        <span class="login__invalid" *ngIf="passwordInvalid">Por favor, ingresa una contraseña válida</span>
+      </div>
+
+      <button class="login__button" type="submit">
+        <span class="login__buton-animation login__buton-animation--1"></span>
+        <span class="login__buton-animation login__buton-animation--2"></span>
+        <span class="login__buton-animation login__buton-animation--3"></span>
+        <span class="login__buton-animation login__buton-animation--4"></span>
+        Submit
+      </button>
+    </form>
+  </div>
+</section>

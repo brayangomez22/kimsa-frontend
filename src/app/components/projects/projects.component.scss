@@ -1,0 +1,263 @@
+.projects {
+  position: relative;
+  width: 100%;
+
+  &__container {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    transition: 0.5s;
+
+    &--active {
+      width: calc(100% - 60px);
+      left: 60px;
+    }
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    margin-top: 25px;
+    padding-top: 0;
+  }
+
+  &__wrapper {
+    position: relative;
+    min-height: 530px;
+    height: 100%;
+    background-image: linear-gradient(
+      rgba(56, 139, 253, 0.1),
+      rgba(56, 139, 253, 0.1)
+    );
+    border-color: rgba(56, 139, 253, 0.1);
+    color: #fff;
+    padding: 0 30px;
+    width: 100%;
+
+    &-null {
+      position: relative;
+      height: 440px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & h3 {
+        font-size: 30px;
+      }
+    }
+  }
+
+  &__header {
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    background-color: #297091;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover {
+      background-color: #1e5570;
+      transform: scale(1.02);
+    }
+  }
+}
+
+.modal {
+  &__container {
+    position: fixed;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    transition: 0.5s;
+
+    &--active {
+      visibility: visible;
+      top: 0%;
+    }
+  }
+
+  &__input-container {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 5px 0;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #333;
+    resize: none;
+
+    &--image {
+      display: none;
+    }
+  }
+
+  &__input:focus ~ &__label,
+  &__input:valid ~ &__label {
+    color: #036b79;
+    font-size: 12px;
+    transform: translateY(-20px);
+  }
+
+  &__title {
+    font-size: 30px;
+    color: #333;
+    font-weight: 500;
+  }
+
+  &__close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    pointer-events: none;
+    transition: 0.5s;
+    color: #666;
+  }
+
+  &__button {
+    width: 100px;
+    cursor: pointer;
+    background: #00bcd3;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 40%;
+    padding: 40px;
+    background: #fff;
+  }
+
+  &__input-error {
+    font-size: 12px;
+    color: #e93340;
+  }
+
+  &__upload-button {
+    padding: 7px 15px;
+    border-radius: 5px;
+    background-color: #00bcd3;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: fit-content;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover {
+      background-color: #00a4b9;
+    }
+  }
+
+  &__upload {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    color: #fff;
+  }
+
+  &__upload-figure {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+  }
+
+  &__upload-image {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .projects {
+    &__container {
+      width: 100%;
+      left: 0;
+
+      &--active {
+        width: calc(100% - 300px);
+        left: 300px;
+      }
+    }
+  }
+
+  .modal {
+    &__content {
+      width: 90%;
+    }
+
+    &__gruop-inputs {
+      width: 100%;
+      display: inline-block;
+      align-items: center;
+      gap: 40px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    &__title {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    &__header {
+      text-align: center;
+      gap: 10px;
+      flex-direction: column;
+      font-size: 15px;
+    }
+
+    &__container {
+      &--active {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+
+  .modal {
+    &__upload {
+      display: inline-block;
+    }
+
+    &__upload-figure {
+      margin-top: 20px;
+    }
+  }
+}

@@ -1,0 +1,121 @@
+<div class="projects">
+  <app-navbar></app-navbar>
+
+  <div class="projects__container">
+    <app-topbar></app-topbar>
+
+    <section class="projects__content">
+      <div class="projects__wrapper">
+        <div class="projects__header">
+          <h2>Projectos</h2>
+          <a (click)="addProject()" class="projects__button"
+            ><i class="fas fa-plus"></i> Añadir nuevo projecto</a
+          >
+        </div>
+        <app-table
+          *ngIf="projects.length >= 1"
+          [columns]="['Foto', 'Título', 'Descripción', 'Acciones']"
+          [items]="projects"
+          (deleteClicked)="handleDeleteProject($event)"
+          (editClicked)="editProject($event)"
+        ></app-table>
+
+        <div
+          class="projects__wrapper-null"
+          *ngIf="projects.length === 0 && loaded"
+        >
+          <h3>Aún no has creado ningún proyecto</h3>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal__container">
+  <div class="modal__content">
+    <form [formGroup]="form">
+      <h2 class="modal__title">
+        {{ isEditModeEnabled ? "Editar" : "Añadir" }} proyecto
+      </h2>
+      <div>
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
+            formControlName="title"
+          />
+          <span class="modal__label">Título</span>
+        </div>
+        <small class="modal__input-error" *ngIf="titleInvalid"
+          >El título es obligatorio</small
+        >
+      </div>
+
+      <div>
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
+            formControlName="description"
+          />
+          <span class="modal__label">Descripción</span>
+        </div>
+        <small class="modal__input-error" *ngIf="descriptionInvalid"
+          >La descrición es obligatoria</small
+        >
+      </div>
+
+      <div *ngIf="!isEditModeEnabled">
+        <div class="modal__input-container">
+          <input
+            class="modal__input modal__input--image"
+            (change)="extractImage($event)"
+            type="file"
+            formControlName="image"
+            #imageInput
+          />
+          <div class="modal__upload">
+            <div class="modal__upload-button" (click)="imageInput.click()">
+              <i class="fas fa-upload"></i>
+              Cargar imagen
+            </div>
+            <figure class="modal__upload-figure">
+              <img
+                class="modal__upload-image"
+                [src]="imageSelected || 'assets/img/image-not-found.png'"
+                alt="noImage"
+              />
+            </figure>
+          </div>
+        </div>
+        <small class="modal__input-error" *ngIf="imageInvalid"
+          >La imagen es obligatoria</small
+        >
+      </div>
+
+      <div class="modal__input-container">
+        <input
+          *ngIf="!isEditModeEnabled"
+          class="modal__button"
+          type="submit"
+          (click)="saveNewProject()"
+          value="Crear"
+        />
+
+        <input
+          *ngIf="isEditModeEnabled"
+          class="modal__button"
+          type="submit"
+          (click)="saveNewEditedProject()"
+          value="Editar"
+        />
+      </div>
+    </form>
+
+    <a class="modal__close" (click)="closeModal()">
+      <img src="assets/img/cancel.png" alt="times-icon"
+    /></a>
+  </div>
+</div>

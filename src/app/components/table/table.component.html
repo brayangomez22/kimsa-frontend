@@ -1,0 +1,69 @@
+<div class="table">
+  <table class="table__container">
+    <thead class="table__head">
+      <tr class="table__tr table__tr--main">
+        <td class="table__td" *ngFor="let column of columns">{{ column }}</td>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <ng-container *ngIf="columns.length === 4">
+        <ng-container *ngFor="let item of items">
+          <tr class="table__body-tr">
+            <td class="table__body-td">
+              <img
+                class="table__image"
+                [src]="url + item?.image"
+                [alt]="item?.id"
+              />
+            </td>
+            <td class="table__body-td">{{ item?.title }}</td>
+            <td class="table__body-td">{{ item?.description }}</td>
+            <td class="table__body-td">
+              <a
+                (click)="handleEdit(item)"
+                class="table__button table__button--edit"
+                ><i class="fas fa-edit"></i
+              ></a>
+              <a
+                (click)="handleDelete(item?._id)"
+                class="table__button table__button--delete"
+                ><i class="fas fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+  
+      <ng-container *ngIf="columns.length === 6">
+        <ng-container *ngFor="let item of items">
+          <tr class="table__body-tr">
+            <td class="table__body-td">
+              <img
+                [src]="url + item?.photo"
+                class="table__image"
+                alt="Profile photo"
+              />
+            </td>
+            <td class="table__body-td">{{ item?.firstName }}</td>
+            <td class="table__body-td">{{ item?.lastName }}</td>
+            <td class="table__body-td">{{ item?.rol }}</td>
+            <td class="table__body-td">{{ item?.description }}</td>
+            <td class="table__body-td">
+              <a
+                (click)="handleEditPartner(item)"
+                class="table__button table__button--edit"
+                ><i class="fas fa-edit"></i
+              ></a>
+              <a
+                (click)="handleDelete(item?._id)"
+                class="table__button table__button--delete"
+                ><i class="fas fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>  
+</div>

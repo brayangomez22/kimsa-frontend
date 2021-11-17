@@ -1,0 +1,28 @@
+<nav class="navbar__container">
+  <ul class="navbar__list">
+    <li class="navbar__item navbar__item--main">
+      <a class="navbar__link" [routerLink]="['/projects']">
+        <span class="navbar__icon"><i class="fas fa-home"></i></span>
+        <span class="navbar__text">Panel de Control</span>
+      </a>
+    </li>
+    <li class="navbar__item">
+      <a class="navbar__link" [routerLink]="['/projects']">
+        <span class="navbar__icon"><i class="fas fa-project-diagram"></i></span>
+        <span class="navbar__text">Proyectos</span>
+      </a>
+    </li>
+    <li class="navbar__item">
+      <a class="navbar__link" [routerLink]="['/team']">
+        <span class="navbar__icon"><i class="fas fa-users-cog"></i></span>
+        <span class="navbar__text">Socios</span>
+      </a>
+    </li>
+    <li class="navbar__item">
+      <div class="navbar__link" (click)="closeSession()">
+        <span class="navbar__icon"><i class="fas fa-sign-out-alt"></i></span>
+        <span class="navbar__text">Cerrar Sesión</span>
+      </div>
+    </li>
+  </ul>
+</nav>

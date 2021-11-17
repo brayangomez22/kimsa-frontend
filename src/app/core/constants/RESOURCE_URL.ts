@@ -1,0 +1,15 @@
+export const RESOURCE_URL = {
+  createAdmin: `/admin`,
+  loginAdmin: `/admin/auth`,
+  createPartner: `/partners`,
+  createProject: `/projects`,
+  getAllPartners: `/partners`,
+  getAllProjects: `/projects`,
+  getProjectsPaginated: `/projects/pagination`,
+  getPartnerById: (userId: string) => `/partners/${userId}`,
+  getProjectById: (projectId: string) => `/projects/${projectId}`,
+  deletePartner: (userId: string) => `/partners/${userId}`,
+  deleteProject: (projectId: string) => `/projects/${projectId}`,
+  editProject: (projectId: string) => `/projects/${projectId}`,
+  editPartner: (userId: string) => `/partners/${userId}`,
+};

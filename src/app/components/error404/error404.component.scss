@@ -1,0 +1,132 @@
+.error404 {
+  &__overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: linear-gradient(rgba(56, 139, 253, 0.1), rgba(56, 139, 253, 0.1));
+  }
+
+  &__content {
+    position: fixed;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font: 200 16px avenir, sans-serif;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  &__error {
+    font: 900 160px roboto, sans-serif;
+    line-height: 65%;
+    margin-bottom: 40px;
+    text-shadow: 0 16px 54px rgba(0, 0, 0, 0.5);
+    animation: glitch 2.6s infinite, glitch-2 2.4s infinite;
+    z-index: 1;
+
+    &:before {
+      content: "404";
+      position: absolute;
+      transform: translate(15px, 15px);
+      opacity: 0.5;
+      z-index: -1;
+      animation: backglow 0.2s infinite, glitch 0.8s infinite, color-transition 1s infinite;
+    }
+  }
+
+  &__info {
+    margin-bottom: 24px;
+    animation: glitch 3.7s infinite;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  &__button {
+    display: inline-block;
+    background-color: #3296fc;
+    padding: 8px 32px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+
+    &:hover {
+      background-color: #2d87e3;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+@keyframes glitch {
+  0%, 5%, 7%, 39%, 41%, 100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scaleY(1);
+  }
+
+  6% {
+    opacity: 1;
+    filter: blur(2px);
+    transform: scaleY(1.9);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scaleX(1.8);
+  }
+}
+
+@keyframes glitch {
+  0%, 5%, 7%, 39%, 41%, 100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scaleY(1);
+  }
+
+  6% {
+    opacity: 1;
+    filter: blur(2px);
+    transform: scaleY(1.9);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scaleX(1.8);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 11%, 13%, 66%, 68%, 100% { transform: skewY(0) skewX(0); }
+  12% { transform: skewY(10deg); }
+  67% { transform: skewX(70deg); }
+}
+
+@keyframes glitch-2 {
+  0%, 11%, 13%, 66%, 68%, 100% { transform: skewY(0) skewX(0); }
+  12% { transform: skewY(10deg); }
+  67% { transform: skewX(70deg); }
+}
+
+@keyframes backglow {
+  0%, 21%, 100% { opacity: 0; }
+  20%, 99% { opacity: 1; }
+}
+
+@keyframes backglow {
+  0%, 21%, 100% { opacity: 0; }
+  20%, 99% { opacity: 1; }
+}
+
+@keyframes color-transition {
+  0%, 100% { color: red; }
+  33% { color: blue; }
+  66% { color: indigo; }
+}
+
+@keyframes color-transition {
+  0%, 100% { color: red; }
+  33% { color: blue; }
+  66% { color: indigo; }
+}

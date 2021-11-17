@@ -1,0 +1,190 @@
+<div class="partners">
+  <app-navbar></app-navbar>
+  <div class="partners__container">
+    <app-topbar></app-topbar>
+    <section class="partners__content">
+      <div class="partners__wrapper">
+        <div class="partners__header">
+          <h2>Socios</h2>
+          <a (click)="addPartner()" class="partners__button"
+            ><i class="fas fa-plus"></i> Añadir nuevo socio</a
+          >
+        </div>
+        <app-table
+          *ngIf="partners.length >= 1"
+          [columns]="[
+            'Foto',
+            'Nombre',
+            'Apellido',
+            'Rol',
+            'Descripción',
+            'Acciones'
+          ]"
+          [items]="partners"
+          (deleteClicked)="handleDeletePartner($event)"
+          (editClickedPartner)="editPartner($event)"
+        ></app-table>
+
+        <div
+          class="partners__wrapper-null"
+          *ngIf="partners.length === 0 && loaded"
+        >
+          <h3>Aún no has agregado ningún socio</h3>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal__container">
+  <div class="modal__content">
+    <form [formGroup]="form" (ngSubmit)="saveNewPartner()">
+      <h2 class="modal__title">
+        {{ isEditModeEnabled ? "Editar" : "Añadir" }} socio
+      </h2>
+      <div class="modal__gruop-inputs">
+        <div class="modal__wrapper-input">
+          <div class="modal__input-container">
+            <input
+              class="modal__input"
+              type="text"
+              required
+              formControlName="firstName"
+            />
+            <span class="modal__label">Primer nombre</span>
+          </div>
+          <small class="modal__input-error" *ngIf="firstNameNoValid"
+            >El título es obligatorio</small
+          >
+        </div>
+
+        <div class="modal__wrapper-input">
+          <div class="modal__input-container">
+            <input
+              class="modal__input"
+              type="text"
+              required
+              formControlName="lastName"
+            />
+            <span class="modal__label">Apellido</span>
+          </div>
+          <small class="modal__input-error" *ngIf="lastNameNoValid"
+            >El apellido es obligatorio</small
+          >
+        </div>
+      </div>
+
+      <div class="modal__wrapper-input">
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
+            formControlName="rol"
+          />
+          <span class="modal__label">Rol</span>
+        </div>
+        <small class="modal__input-error" *ngIf="rolNoValid"
+          >El rol es obligatorio</small
+        >
+      </div>
+
+      <div>
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
+            formControlName="description"
+          />
+          <span class="modal__label">Descripción</span>
+        </div>
+        <small class="modal__input-error" *ngIf="descriptionNoValid"
+          >La descripción es obligatoria</small
+        >
+      </div>
+
+      <div class="modal__gruop-inputs">
+        <div class="modal__wrapper-input">
+          <div class="modal__input-container">
+            <input
+              class="modal__input"
+              type="text"
+              required
+              formControlName="firtsRedSocial"
+            />
+            <span class="modal__label">Facebook (url)</span>
+          </div>
+          <small class="modal__input-error" *ngIf="firtsRedSocialNoValid"
+            >Esta red social es obligatoria</small
+          >
+        </div>
+
+        <div class="modal__wrapper-input">
+          <div class="modal__input-container">
+            <input
+              class="modal__input"
+              type="text"
+              required
+              formControlName="secondRedSocial"
+            />
+            <span class="modal__label">Instagram (url)</span>
+          </div>
+          <small class="modal__input-error" *ngIf="secondRedSocialNoValid"
+            >Esta red social es obligatoria</small
+          >
+        </div>
+      </div>
+
+      <div *ngIf="!isEditModeEnabled">
+        <div class="modal__input-container">
+          <input
+            class="modal__input modal__input--image"
+            (change)="extractImage($event)"
+            type="file"
+            formControlName="photo"
+            #imageInput
+          />
+          <div class="modal__upload">
+            <div class="modal__upload-button" (click)="imageInput.click()">
+              <i class="fas fa-upload"></i>
+              Cargar imagen
+            </div>
+            <figure class="modal__upload-figure">
+              <img
+                class="modal__upload-image"
+                [src]="imageSelected || 'assets/img/image-not-found.png'"
+                alt="noImage"
+              />
+            </figure>
+          </div>
+        </div>
+        <small class="modal__input-error" *ngIf="imageInvalid"
+          >La imagen es obligatoria</small
+        >
+      </div>
+
+      <div class="modal__input-container">
+        <input
+          *ngIf="!isEditModeEnabled"
+          class="modal__button"
+          type="submit"
+          (click)="saveNewPartner()"
+          value="Crear"
+        />
+
+        <input
+          *ngIf="isEditModeEnabled"
+          class="modal__button"
+          type="submit"
+          (click)="saveNewEditedPartner()"
+          value="Editar"
+        />
+      </div>
+    </form>
+
+    <a class="modal__close" (click)="closeModal()">
+      <img src="assets/img/cancel.png" alt="times-icon"
+    /></a>
+  </div>
+</div>
