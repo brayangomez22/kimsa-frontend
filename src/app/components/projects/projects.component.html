@@ -14,7 +14,7 @@
         </div>
         <app-table
           *ngIf="projects.length >= 1"
-          [columns]="['Foto', 'Título', 'Descripción', 'Acciones']"
+          [columns]="['Foto', 'Título', 'Entidad', 'Descripción', 'Acciones']"
           [items]="projects"
           (deleteClicked)="handleDeleteProject($event)"
           (editClicked)="editProject($event)"
@@ -45,7 +45,7 @@
             required
             formControlName="title"
           />
-          <span class="modal__label">Título</span>
+          <span class="modal__label">Título *</span>
         </div>
         <small class="modal__input-error" *ngIf="titleInvalid"
           >El título es obligatorio</small
@@ -58,13 +58,37 @@
             class="modal__input"
             type="text"
             required
+            formControlName="entity"
+          />
+          <span class="modal__label">Entidad *</span>
+        </div>
+        <small class="modal__input-error" *ngIf="entityInvalid"
+          >La entidad es obligatoria</small
+        >
+      </div>
+
+      <div>
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
             formControlName="description"
           />
-          <span class="modal__label">Descripción</span>
+          <span class="modal__label">Descripción *</span>
         </div>
         <small class="modal__input-error" *ngIf="descriptionInvalid"
           >La descrición es obligatoria</small
         >
+      </div>
+
+      <div>
+        <div class="modal__input-container">
+          <input class="modal__input" type="text" formControlName="hasInfo" />
+          <span class="modal__label"
+            >Link de información adicional (opcional)</span
+          >
+        </div>
       </div>
 
       <div *ngIf="!isEditModeEnabled">

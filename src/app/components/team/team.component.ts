@@ -38,20 +38,6 @@ export class TeamComponent {
     return this.form.get('rol')?.invalid && this.form.get('rol')?.touched;
   }
 
-  get firtsRedSocialNoValid(): boolean | undefined {
-    return (
-      this.form.get('firtsRedSocial')?.invalid &&
-      this.form.get('firtsRedSocial')?.touched
-    );
-  }
-
-  get secondRedSocialNoValid(): boolean | undefined {
-    return (
-      this.form.get('secondRedSocial')?.invalid &&
-      this.form.get('secondRedSocial')?.touched
-    );
-  }
-
   get descriptionNoValid(): boolean | undefined {
     return (
       this.form.get('description')?.invalid &&
@@ -206,8 +192,8 @@ export class TeamComponent {
       lastName: ['', Validators.required],
       rol: ['', Validators.required],
       description: ['', Validators.required],
-      firtsRedSocial: ['', Validators.required],
-      secondRedSocial: ['', Validators.required],
+      firtsRedSocial: [''],
+      secondRedSocial: [''],
       photo: ['', Validators.required],
     });
   }

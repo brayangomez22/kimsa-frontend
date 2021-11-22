@@ -51,7 +51,7 @@
               required
               formControlName="firstName"
             />
-            <span class="modal__label">Primer nombre</span>
+            <span class="modal__label">Primer nombre *</span>
           </div>
           <small class="modal__input-error" *ngIf="firstNameNoValid"
             >El título es obligatorio</small
@@ -66,7 +66,7 @@
               required
               formControlName="lastName"
             />
-            <span class="modal__label">Apellido</span>
+            <span class="modal__label">Apellido *</span>
           </div>
           <small class="modal__input-error" *ngIf="lastNameNoValid"
             >El apellido es obligatorio</small
@@ -82,7 +82,7 @@
             required
             formControlName="rol"
           />
-          <span class="modal__label">Rol</span>
+          <span class="modal__label">Rol *</span>
         </div>
         <small class="modal__input-error" *ngIf="rolNoValid"
           >El rol es obligatorio</small
@@ -97,7 +97,7 @@
             required
             formControlName="description"
           />
-          <span class="modal__label">Descripción</span>
+          <span class="modal__label">Descripción *</span>
         </div>
         <small class="modal__input-error" *ngIf="descriptionNoValid"
           >La descripción es obligatoria</small
@@ -110,14 +110,10 @@
             <input
               class="modal__input"
               type="text"
-              required
               formControlName="firtsRedSocial"
             />
             <span class="modal__label">Facebook (url)</span>
           </div>
-          <small class="modal__input-error" *ngIf="firtsRedSocialNoValid"
-            >Esta red social es obligatoria</small
-          >
         </div>
 
         <div class="modal__wrapper-input">
@@ -125,14 +121,10 @@
             <input
               class="modal__input"
               type="text"
-              required
               formControlName="secondRedSocial"
             />
             <span class="modal__label">Instagram (url)</span>
           </div>
-          <small class="modal__input-error" *ngIf="secondRedSocialNoValid"
-            >Esta red social es obligatoria</small
-          >
         </div>
       </div>
 

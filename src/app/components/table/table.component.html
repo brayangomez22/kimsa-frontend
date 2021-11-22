@@ -5,20 +5,18 @@
         <td class="table__td" *ngFor="let column of columns">{{ column }}</td>
       </tr>
     </thead>
-  
+
     <tbody>
-      <ng-container *ngIf="columns.length === 4">
+      <ng-container *ngIf="columns.length === 5">
         <ng-container *ngFor="let item of items">
           <tr class="table__body-tr">
             <td class="table__body-td">
-              <img
-                class="table__image"
-                [src]="url + item?.image"
-                [alt]="item?.id"
-              />
+              <img class="table__image" [src]="item?.image" [alt]="item?.id" />
             </td>
             <td class="table__body-td">{{ item?.title }}</td>
+            <td class="table__body-td">{{ item?.entity }}</td>
             <td class="table__body-td">{{ item?.description }}</td>
+
             <td class="table__body-td">
               <a
                 (click)="handleEdit(item)"
@@ -34,13 +32,13 @@
           </tr>
         </ng-container>
       </ng-container>
-  
+
       <ng-container *ngIf="columns.length === 6">
         <ng-container *ngFor="let item of items">
           <tr class="table__body-tr">
             <td class="table__body-td">
               <img
-                [src]="url + item?.photo"
+                [src]="item?.photo"
                 class="table__image"
                 alt="Profile photo"
               />
@@ -65,5 +63,5 @@
         </ng-container>
       </ng-container>
     </tbody>
-  </table>  
+  </table>
 </div>

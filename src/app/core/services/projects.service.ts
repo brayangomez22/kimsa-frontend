@@ -15,8 +15,18 @@ export class ProjectsService {
     const url = environment.apiUrl + RESOURCE_URL.createProject;
     const request = new FormData();
 
+    let hasInfo = null;
+
+    if (body.hasInfo !== '') {
+      hasInfo = body.hasInfo;
+    } else {
+      hasInfo = null;
+    }
+
     request.append('title', body.title);
     request.append('image', body.image);
+    request.append('entity', body.entity);
+    request.append('hasInfo', hasInfo);
     request.append('description', body.description);
 
     return this.http.postFile(url, request);

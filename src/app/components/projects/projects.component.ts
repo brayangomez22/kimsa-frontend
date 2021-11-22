@@ -25,6 +25,10 @@ export class ProjectsComponent {
     return this.form.get('title')?.invalid && this.form.get('title')?.touched;
   }
 
+  get entityInvalid(): boolean | undefined {
+    return this.form.get('entity')?.invalid && this.form.get('entity')?.touched;
+  }
+
   get descriptionInvalid(): boolean | undefined {
     return (
       this.form.get('description')?.invalid &&
@@ -50,6 +54,7 @@ export class ProjectsComponent {
 
     this.store.select('projects').subscribe(({ projects, loaded, error }) => {
       this.projects = projects;
+
       this.loaded = loaded;
       this.error = error;
     });
@@ -113,6 +118,8 @@ export class ProjectsComponent {
       id: project._id,
       description: project.description,
       title: project.title,
+      entity: project.entity,
+      hasInfo: project.hasInfo,
       image: '',
     });
   }
@@ -134,13 +141,21 @@ export class ProjectsComponent {
       id: [''],
       description: ['', Validators.required],
       title: ['', Validators.required],
+      entity: ['', Validators.required],
+      hasInfo: [''],
       image: ['', Validators.required],
     });
   }
 
   private resetForm(): void {
     this.imageSelected = null;
-    this.form.reset({ description: '', title: '', image: '' });
+    this.form.reset({
+      description: '',
+      title: '',
+      image: '',
+      entity: '',
+      hasInfo: '',
+    });
   }
 
   private validateForm(): void {
