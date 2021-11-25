@@ -91,6 +91,10 @@ export class TeamComponent {
         name: 'instagram',
         url: this.form.value.secondRedSocial,
       },
+      {
+        name: 'linkedin',
+        url: this.form.value.thirdRedSocial,
+      },
     ];
 
     const partner = {
@@ -100,6 +104,7 @@ export class TeamComponent {
 
     delete partner.firtsRedSocial;
     delete partner.secondRedSocial;
+    delete partner.thirdRedSocial;
 
     this.store.dispatch(actions.ADD_PARTNER(partner));
     this.resetForm();
@@ -151,8 +156,9 @@ export class TeamComponent {
       lastName: partner.lastName,
       rol: partner.rol,
       description: partner.description,
-      firtsRedSocial: partner.socialsNetworks[0].url,
-      secondRedSocial: partner.socialsNetworks[1].url,
+      firtsRedSocial: partner.socialsNetworks[0].url || '',
+      secondRedSocial: partner.socialsNetworks[1].url || '',
+      thirdRedSocial: partner.socialsNetworks[2].url || '',
       photo: '',
     });
   }
@@ -169,6 +175,10 @@ export class TeamComponent {
         name: 'instagram',
         url: partner.secondRedSocial,
       },
+      {
+        name: 'linkedin',
+        url: partner.thirdRedSocial,
+      },
     ];
 
     const partnerEdited = {
@@ -179,6 +189,7 @@ export class TeamComponent {
 
     delete partnerEdited.firtsRedSocial;
     delete partnerEdited.secondRedSocial;
+    delete partnerEdited.thirdRedSocial;
 
     this.store.dispatch(actions.UPDATE_PARTNER({ partner: partnerEdited }));
     this.resetForm();
@@ -194,6 +205,7 @@ export class TeamComponent {
       description: ['', Validators.required],
       firtsRedSocial: [''],
       secondRedSocial: [''],
+      thirdRedSocial: [''],
       photo: ['', Validators.required],
     });
   }
@@ -207,6 +219,7 @@ export class TeamComponent {
       description: '',
       firtsRedSocial: '',
       secondRedSocial: '',
+      thirdRedSocial: '',
       photo: '',
     });
   }

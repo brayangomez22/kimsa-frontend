@@ -17,25 +17,35 @@ export class LoginComponent {
   }
 
   get passwordInvalid(): boolean | undefined {
-    return this.form.get('password')?.invalid && this.form.get('password')?.touched;
+    return (
+      this.form.get('password')?.invalid && this.form.get('password')?.touched
+    );
   }
 
   constructor(
     private fb: FormBuilder,
     private adminService: AdminService,
     private router: Router
-  ) { this.createForm(); }
+  ) {
+    this.createForm();
+  }
 
   save(): void {
-    if (this.form.invalid) { return this.validateForm(); }
+    if (this.form.invalid) {
+      return this.validateForm();
+    }
 
-    this.adminService.loginAdmin(this.form.value).subscribe((response) => {
-      const userLogged = response?.adminLogged?.[0];
+    this.adminService.loginAdmin(this.form.value).subscribe(
+      (response) => {
+        const userLogged = response?.adminLogged;
 
-      userLogged
-        ? this.userLoggedSuccess(JSON.stringify(userLogged))
-        : this.showErrorModal('El usuario con el que trataste de ingresar no se encuentra registrado...');
-    });
+        this.userLoggedSuccess(JSON.stringify(userLogged));
+      },
+      (err) =>
+        this.showErrorModal(
+          'El usuario con el que trataste de ingresar no se encuentra registrado...'
+        )
+    );
   }
 
   private createForm(): void {
@@ -72,13 +82,15 @@ export class LoginComponent {
   private validateForm(): void {
     return Object.values(this.form.controls).forEach((control) => {
       control instanceof FormGroup
-        ? Object.values(control.controls).forEach((control) => control.markAsTouched())
+        ? Object.values(control.controls).forEach((control) =>
+            control.markAsTouched()
+          )
         : control.markAsTouched();
     });
   }
 
   private userLoggedSuccess(userLogged: string): void {
-    localStorage.setItem('CURRENT_ADMIN', userLogged);    
+    localStorage.setItem('CURRENT_ADMIN', userLogged);
     this.router.navigateByUrl('/projects');
     this.resetForm();
   }
