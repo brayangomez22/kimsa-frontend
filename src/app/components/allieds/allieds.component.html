@@ -1,0 +1,56 @@
+<div class="projects">
+  <app-navbar></app-navbar>
+
+  <div class="projects__container">
+    <app-topbar></app-topbar>
+
+    <section class="projects__content">
+      <div class="projects__wrapper">
+        <div class="projects__header">
+          <h2>Aliados</h2>
+          <a (click)="openModal()" class="projects__button"><i class="fas fa-plus"></i> Añadir nuevo aliado</a>
+        </div>
+
+        <app-table
+          *ngIf="allieds.length >= 1"
+          [columns]="['Foto', 'Acciones']"
+          [items]="allieds"
+          (deleteClicked)="handleDeleteAllied($event)"
+        ></app-table>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="modal__container">
+  <div class="modal__content">
+    <form [formGroup]="form">
+      <h2 class="modal__title">
+        Añadir aliados
+      </h2>
+
+      <div class="modal__input-container">
+        <input class="modal__input modal__input--image" (change)="extractImage($event)" type="file"
+          formControlName="image" #imageInput />
+        <div class="modal__upload">
+          <div class="modal__upload-button" (click)="imageInput.click()">
+            <i class="fas fa-upload"></i>
+            Cargar imagen
+          </div>
+          <figure class="modal__upload-figure">
+            <img class="modal__upload-image" [src]="imageSelected || 'assets/img/image-not-found.png'" alt="noImage" />
+          </figure>
+        </div>
+      </div>
+      <small class="modal__input-error" *ngIf="imageInvalid">La imagen es obligatoria</small>
+
+      <div class="modal__input-container">
+        <input class="modal__button" (click)="save()" type="submit" value="Crear" />
+      </div>
+    </form>
+
+    <a class="modal__close" (click)="closeModal()">
+      <img src="assets/img/cancel.png" alt="times-icon" /></a>
+  </div>
+</div>

@@ -13,6 +13,8 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TableComponent } from './table/table.component';
+import { ClientsComponent } from './clients/clients.component';
+import { AlliedsComponent } from './allieds/allieds.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { TableComponent } from './table/table.component';
     TopbarComponent,
     NavbarComponent,
     TableComponent,
+    ClientsComponent,
+    AlliedsComponent,
   ],
   exports: [
     Error404Component,

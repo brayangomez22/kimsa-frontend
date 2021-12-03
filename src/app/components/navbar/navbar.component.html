@@ -19,6 +19,18 @@
       </a>
     </li>
     <li class="navbar__item">
+      <a class="navbar__link" [routerLink]="['/clients']">
+        <span class="navbar__icon"><i class="fas fa-search-dollar"></i></span>
+        <span class="navbar__text">Clientes</span>
+      </a>
+    </li>
+    <li class="navbar__item">
+      <a class="navbar__link" [routerLink]="['/allieds']">
+        <span class="navbar__icon"><i class="fas fa-user-friends"></i></span>
+        <span class="navbar__text">Aliados</span>
+      </a>
+    </li>
+    <li class="navbar__item">
       <div class="navbar__link" (click)="closeSession()">
         <span class="navbar__icon"><i class="fas fa-sign-out-alt"></i></span>
         <span class="navbar__text">Cerrar Sesión</span>

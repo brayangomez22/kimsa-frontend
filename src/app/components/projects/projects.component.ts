@@ -162,8 +162,8 @@ export class ProjectsComponent {
     return Object.values(this.form.controls).forEach((control) => {
       control instanceof FormGroup
         ? Object.values(control.controls).forEach((control) =>
-            control.markAsTouched()
-          )
+          control.markAsTouched()
+        )
         : control.markAsTouched();
     });
   }

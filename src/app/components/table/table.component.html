@@ -62,6 +62,27 @@
           </tr>
         </ng-container>
       </ng-container>
+
+      <ng-container *ngIf="columns.length === 2">
+        <ng-container *ngFor="let item of items">
+          <tr class="table__body-tr">
+            <td class="table__body-td">
+              <img
+                [src]="item?.image"
+                class="table__image"
+                [alt]="item?._id"
+              />
+            </td>
+            <td class="table__body-td">
+              <a
+                (click)="handleDelete(item?._id)"
+                class="table__button table__button--delete"
+                ><i class="fas fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
     </tbody>
   </table>
 </div>
