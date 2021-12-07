@@ -1,4 +1,4 @@
-.projects {
+.clients {
   position: relative;
   width: 100%;
 
@@ -203,7 +203,7 @@
 }
 
 @media (max-width: 992px) {
-  .projects {
+  .clients {
     &__container {
       width: 100%;
       left: 0;
@@ -230,7 +230,7 @@
 }
 
 @media (max-width: 480px) {
-  .projects {
+  .clients {
     &__title {
       font-weight: 600;
       font-size: 18px;
