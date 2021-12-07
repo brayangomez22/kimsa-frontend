@@ -42,6 +42,7 @@
       <h2 class="modal__title">
         {{ isEditModeEnabled ? "Editar" : "Añadir" }} socio
       </h2>
+
       <div class="modal__gruop-inputs">
         <div class="modal__wrapper-input">
           <div class="modal__input-container">
@@ -53,7 +54,7 @@
             />
             <span class="modal__label">Primer nombre *</span>
           </div>
-          <small class="modal__input-error" *ngIf="firstNameNoValid"
+          <small class="modal__input-error" *ngIf="invalidField('firstName')"
             >El título es obligatorio</small
           >
         </div>
@@ -68,7 +69,7 @@
             />
             <span class="modal__label">Apellido *</span>
           </div>
-          <small class="modal__input-error" *ngIf="lastNameNoValid"
+          <small class="modal__input-error" *ngIf="invalidField('lastName')"
             >El apellido es obligatorio</small
           >
         </div>
@@ -80,11 +81,26 @@
             class="modal__input"
             type="text"
             required
-            formControlName="rol"
+            formControlName="rolSpanish"
           />
-          <span class="modal__label">Rol *</span>
+          <span class="modal__label">Rol en Español *</span>
         </div>
-        <small class="modal__input-error" *ngIf="rolNoValid"
+        <small class="modal__input-error" *ngIf="invalidField('rolSpanish')"
+          >El rol es obligatorio</small
+        >
+      </div>
+
+      <div class="modal__wrapper-input">
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
+            formControlName="rolEnglish"
+          />
+          <span class="modal__label">Rol en Inglés *</span>
+        </div>
+        <small class="modal__input-error" *ngIf="invalidField('rolEnglish')"
           >El rol es obligatorio</small
         >
       </div>
@@ -95,11 +111,30 @@
             class="modal__input"
             type="text"
             required
-            formControlName="description"
+            formControlName="descriptionSpanish"
           />
-          <span class="modal__label">Descripción *</span>
+          <span class="modal__label">Descripción en Español *</span>
         </div>
-        <small class="modal__input-error" *ngIf="descriptionNoValid"
+        <small
+          class="modal__input-error"
+          *ngIf="invalidField('descriptionSpanish')"
+          >La descripción es obligatoria</small
+        >
+      </div>
+
+      <div>
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
+            formControlName="descriptionEnglish"
+          />
+          <span class="modal__label">Descripción en Inglés *</span>
+        </div>
+        <small
+          class="modal__input-error"
+          *ngIf="invalidField('descriptionEnglish')"
           >La descripción es obligatoria</small
         >
       </div>
@@ -162,7 +197,7 @@
             </figure>
           </div>
         </div>
-        <small class="modal__input-error" *ngIf="imageInvalid"
+        <small class="modal__input-error" *ngIf="invalidField('photo')"
           >La imagen es obligatoria</small
         >
       </div>

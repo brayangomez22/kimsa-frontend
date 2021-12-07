@@ -22,37 +22,6 @@ export class TeamComponent {
   public isEditModeEnabled: boolean = false;
   public currentPartnerToEdit!: Partner;
 
-  get firstNameNoValid(): boolean | undefined {
-    return (
-      this.form.get('firstName')?.invalid && this.form.get('firstName')?.touched
-    );
-  }
-
-  get lastNameNoValid(): boolean | undefined {
-    return (
-      this.form.get('lastName')?.invalid && this.form.get('lastName')?.touched
-    );
-  }
-
-  get rolNoValid(): boolean | undefined {
-    return this.form.get('rol')?.invalid && this.form.get('rol')?.touched;
-  }
-
-  get descriptionNoValid(): boolean | undefined {
-    return (
-      this.form.get('description')?.invalid &&
-      this.form.get('description')?.touched
-    );
-  }
-
-  get photoInvalid(): boolean | undefined {
-    return this.form.get('photo')?.invalid && this.form.get('photo')?.touched;
-  }
-
-  get imageInvalid(): boolean | undefined {
-    return this.form.get('photo')?.invalid && this.form.get('photo')?.touched;
-  }
-
   constructor(
     private fb: FormBuilder,
     private element: ElementRef,
@@ -60,6 +29,14 @@ export class TeamComponent {
   ) {
     this.createForm();
     this.getPartners();
+  }
+
+  public invalidField(field: string): boolean {
+    if (this.form.get(field)?.invalid && this.form.get(field)?.touched) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   private getPartners(): void {
@@ -154,8 +131,10 @@ export class TeamComponent {
       id: partner._id,
       firstName: partner.firstName,
       lastName: partner.lastName,
-      rol: partner.rol,
-      description: partner.description,
+      rolSpanish: partner.rolSpanish,
+      rolEnglish: partner.rolEnglish,
+      descriptionSpanish: partner.descriptionSpanish,
+      descriptionEnglish: partner.descriptionEnglish,
       firtsRedSocial: partner.socialsNetworks[0].url || '',
       secondRedSocial: partner.socialsNetworks[1].url || '',
       thirdRedSocial: partner.socialsNetworks[2].url || '',
@@ -201,8 +180,10 @@ export class TeamComponent {
       id: [''],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      rol: ['', Validators.required],
-      description: ['', Validators.required],
+      rolSpanish: ['', Validators.required],
+      rolEnglish: ['', Validators.required],
+      descriptionSpanish: ['', Validators.required],
+      descriptionEnglish: ['', Validators.required],
       firtsRedSocial: [''],
       secondRedSocial: [''],
       thirdRedSocial: [''],
@@ -215,8 +196,10 @@ export class TeamComponent {
     this.form.reset({
       firstName: '',
       lastName: '',
-      rol: '',
-      description: '',
+      rolSpanish: '',
+      rolEnglish: '',
+      descriptionSpanish: '',
+      descriptionEnglish: '',
       firtsRedSocial: '',
       secondRedSocial: '',
       thirdRedSocial: '',

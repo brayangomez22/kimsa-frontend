@@ -21,25 +21,6 @@ export class ProjectsComponent {
   public isEditModeEnabled: boolean = false;
   public currentProjectToEdit!: Project;
 
-  get titleInvalid(): boolean | undefined {
-    return this.form.get('title')?.invalid && this.form.get('title')?.touched;
-  }
-
-  get entityInvalid(): boolean | undefined {
-    return this.form.get('entity')?.invalid && this.form.get('entity')?.touched;
-  }
-
-  get descriptionInvalid(): boolean | undefined {
-    return (
-      this.form.get('description')?.invalid &&
-      this.form.get('description')?.touched
-    );
-  }
-
-  get imageInvalid(): boolean | undefined {
-    return this.form.get('image')?.invalid && this.form.get('image')?.touched;
-  }
-
   constructor(
     private fb: FormBuilder,
     private element: ElementRef,
@@ -47,6 +28,14 @@ export class ProjectsComponent {
   ) {
     this.createForm();
     this.getProjects();
+  }
+
+  public invalidField(field: string): boolean {
+    if (this.form.get(field)?.invalid && this.form.get(field)?.touched) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   private getProjects(): void {
@@ -116,9 +105,12 @@ export class ProjectsComponent {
   createEditedForm(project: any): void {
     this.form.reset({
       id: project._id,
-      description: project.description,
-      title: project.title,
-      entity: project.entity,
+      titleSpanish: project.titleSpanish,
+      titleEnglish: project.titleEnglish,
+      entitySpanish: project.entitySpanish,
+      entityEnglish: project.entityEnglish,
+      descriptionSpanish: project.descriptionSpanish,
+      descriptionEnglish: project.descriptionEnglish,
       hasInfo: project.hasInfo,
       image: '',
     });
@@ -139,9 +131,12 @@ export class ProjectsComponent {
   private createForm(): void {
     this.form = this.fb.group({
       id: [''],
-      description: ['', Validators.required],
-      title: ['', Validators.required],
-      entity: ['', Validators.required],
+      titleSpanish: ['', Validators.required],
+      titleEnglish: ['', Validators.required],
+      entitySpanish: ['', Validators.required],
+      entityEnglish: ['', Validators.required],
+      descriptionSpanish: ['', Validators.required],
+      descriptionEnglish: ['', Validators.required],
       hasInfo: [''],
       image: ['', Validators.required],
     });
@@ -150,11 +145,14 @@ export class ProjectsComponent {
   private resetForm(): void {
     this.imageSelected = null;
     this.form.reset({
-      description: '',
-      title: '',
-      image: '',
-      entity: '',
+      titleSpanish: '',
+      titleEnglish: '',
+      entitySpanish: '',
+      entityEnglish: '',
+      descriptionSpanish: '',
+      descriptionEnglish: '',
       hasInfo: '',
+      image: '',
     });
   }
 
@@ -162,8 +160,8 @@ export class ProjectsComponent {
     return Object.values(this.form.controls).forEach((control) => {
       control instanceof FormGroup
         ? Object.values(control.controls).forEach((control) =>
-          control.markAsTouched()
-        )
+            control.markAsTouched()
+          )
         : control.markAsTouched();
     });
   }

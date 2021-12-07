@@ -23,11 +23,14 @@ export class ProjectsService {
       hasInfo = null;
     }
 
-    request.append('title', body.title);
-    request.append('image', body.image);
-    request.append('entity', body.entity);
+    request.append('titleSpanish', body.titleSpanish);
+    request.append('titleEnglish', body.titleEnglish);
+    request.append('entitySpanish', body.entitySpanish);
+    request.append('entityEnglish', body.entityEnglish);
+    request.append('descriptionSpanish', body.descriptionSpanish);
+    request.append('descriptionEnglish', body.descriptionEnglish);
     request.append('hasInfo', hasInfo);
-    request.append('description', body.description);
+    request.append('image', body.image);
 
     return this.http.postFile(url, request);
   }

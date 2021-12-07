@@ -7,18 +7,22 @@ export class Partner {
   id?: string;
   firstName?: string;
   lastName?: string;
-  photo?: string;
-  rol?: string;
-  description?: string;
+  rolSpanish?: string;
+  rolEnglish?: string;
+  descriptionSpanish?: string;
+  descriptionEnglish?: string;
   socialsNetworks?: SocialsNetworksModel[];
+  photo?: string;
 
   constructor() {
     (this.id = ''),
       (this.firstName = ''),
       (this.lastName = ''),
-      (this.photo = ''),
-      (this.rol = ''),
-      (this.description = ''),
-      (this.socialsNetworks = []);
+      (this.rolSpanish = ''),
+      (this.rolEnglish = ''),
+      (this.descriptionSpanish = ''),
+      (this.descriptionEnglish = ''),
+      (this.socialsNetworks = []),
+      (this.photo = '');
   }
 }

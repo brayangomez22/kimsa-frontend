@@ -13,9 +13,9 @@
             <td class="table__body-td">
               <img class="table__image" [src]="item?.image" [alt]="item?.id" />
             </td>
-            <td class="table__body-td">{{ item?.title }}</td>
-            <td class="table__body-td">{{ item?.entity }}</td>
-            <td class="table__body-td">{{ item?.description }}</td>
+            <td class="table__body-td">{{ item?.titleSpanish }}</td>
+            <td class="table__body-td">{{ item?.entitySpanish }}</td>
+            <td class="table__body-td">{{ item?.descriptionSpanish }}</td>
 
             <td class="table__body-td">
               <a
@@ -45,8 +45,8 @@
             </td>
             <td class="table__body-td">{{ item?.firstName }}</td>
             <td class="table__body-td">{{ item?.lastName }}</td>
-            <td class="table__body-td">{{ item?.rol }}</td>
-            <td class="table__body-td">{{ item?.description }}</td>
+            <td class="table__body-td">{{ item?.rolSpanish }}</td>
+            <td class="table__body-td">{{ item?.descriptionSpanish }}</td>
             <td class="table__body-td">
               <a
                 (click)="handleEditPartner(item)"
@@ -67,11 +67,7 @@
         <ng-container *ngFor="let item of items">
           <tr class="table__body-tr">
             <td class="table__body-td">
-              <img
-                [src]="item?.image"
-                class="table__image"
-                [alt]="item?._id"
-              />
+              <img [src]="item?.image" class="table__image" [alt]="item?._id" />
             </td>
             <td class="table__body-td">
               <a

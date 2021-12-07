@@ -37,17 +37,18 @@
       <h2 class="modal__title">
         {{ isEditModeEnabled ? "Editar" : "Añadir" }} proyecto
       </h2>
+
       <div>
         <div class="modal__input-container">
           <input
             class="modal__input"
             type="text"
             required
-            formControlName="title"
+            formControlName="titleSpanish"
           />
-          <span class="modal__label">Título *</span>
+          <span class="modal__label">Título en Español *</span>
         </div>
-        <small class="modal__input-error" *ngIf="titleInvalid"
+        <small class="modal__input-error" *ngIf="invalidField('titleSpanish')"
           >El título es obligatorio</small
         >
       </div>
@@ -58,11 +59,11 @@
             class="modal__input"
             type="text"
             required
-            formControlName="entity"
+            formControlName="entitySpanish"
           />
-          <span class="modal__label">Entidad *</span>
+          <span class="modal__label">Entidad en Español *</span>
         </div>
-        <small class="modal__input-error" *ngIf="entityInvalid"
+        <small class="modal__input-error" *ngIf="invalidField('entitySpanish')"
           >La entidad es obligatoria</small
         >
       </div>
@@ -73,11 +74,60 @@
             class="modal__input"
             type="text"
             required
-            formControlName="description"
+            formControlName="descriptionSpanish"
           />
-          <span class="modal__label">Descripción *</span>
+          <span class="modal__label">Descripción en Español *</span>
         </div>
-        <small class="modal__input-error" *ngIf="descriptionInvalid"
+        <small
+          class="modal__input-error"
+          *ngIf="invalidField('descriptionSpanish')"
+          >La descrición es obligatoria</small
+        >
+      </div>
+
+      <div>
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
+            formControlName="titleEnglish"
+          />
+          <span class="modal__label">Título en Inglés *</span>
+        </div>
+        <small class="modal__input-error" *ngIf="invalidField('titleEnglish')"
+          >El título es obligatorio</small
+        >
+      </div>
+
+      <div>
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
+            formControlName="entityEnglish"
+          />
+          <span class="modal__label">Entidad en Inglés *</span>
+        </div>
+        <small class="modal__input-error" *ngIf="invalidField('entityEnglish')"
+          >La entidad es obligatoria</small
+        >
+      </div>
+
+      <div>
+        <div class="modal__input-container">
+          <input
+            class="modal__input"
+            type="text"
+            required
+            formControlName="descriptionEnglish"
+          />
+          <span class="modal__label">Descripción en Inglés *</span>
+        </div>
+        <small
+          class="modal__input-error"
+          *ngIf="invalidField('descriptionEnglish')"
           >La descrición es obligatoria</small
         >
       </div>
@@ -114,7 +164,7 @@
             </figure>
           </div>
         </div>
-        <small class="modal__input-error" *ngIf="imageInvalid"
+        <small class="modal__input-error" *ngIf="invalidField('image')"
           >La imagen es obligatoria</small
         >
       </div>

@@ -1,17 +1,23 @@
 export class Project {
   id?: string;
-  title?: string;
-  image?: string;
-  entity?: string;
+  titleSpanish?: string;
+  titleEnglish?: string;
+  entitySpanish?: string;
+  entityEnglish?: string;
+  descriptionSpanish?: string;
+  descriptionEnglish?: string;
   hasInfo?: string;
-  description?: string;
+  image?: string;
 
   constructor() {
     (this.id = ''),
-      (this.title = ''),
-      (this.image = ''),
-      (this.entity = ''),
+      (this.titleSpanish = ''),
+      (this.titleEnglish = ''),
+      (this.entitySpanish = ''),
+      (this.entityEnglish = ''),
+      (this.descriptionSpanish = ''),
+      (this.descriptionEnglish = ''),
       (this.hasInfo = ''),
-      (this.description = '');
+      (this.image = '');
   }
 }

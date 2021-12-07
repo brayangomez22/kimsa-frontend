@@ -18,8 +18,10 @@ export class PartnersService {
     request.append('firstName', body.firstName);
     request.append('lastName', body.lastName);
     request.append('photo', body.photo);
-    request.append('rol', body.rol);
-    request.append('description', body.description);
+    request.append('rolSpanish', body.rolSpanish);
+    request.append('rolEnglish', body.rolEnglish);
+    request.append('descriptionSpanish', body.descriptionSpanish);
+    request.append('descriptionEnglish', body.descriptionEnglish);
     request.append('socialsNetworks', body.socialsNetworks);
 
     return this.http.postFile(url, request);
