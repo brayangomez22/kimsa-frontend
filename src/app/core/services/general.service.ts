@@ -30,7 +30,7 @@ export class GeneralService {
     return this.http.delete(url, { headers: this.headers });
   }
 
-  edit(url: string, body: Project) {
+  edit(url: string, body: any) {
     return this.http.put(url, body, { headers: this.headers });
   }
 }

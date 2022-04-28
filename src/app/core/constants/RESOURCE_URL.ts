@@ -1,6 +1,6 @@
 export const RESOURCE_URL = {
   createAdmin: `/admin`,
-  loginAdmin: `/admin/auth`,
+  loginAdmin: `/users/login`,
   createPartner: `/partners`,
   createProject: `/projects`,
   getAllPartners: `/partners`,

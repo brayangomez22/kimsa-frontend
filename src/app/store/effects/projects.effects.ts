@@ -19,7 +19,7 @@ export class ProjectsEffects {
       ofType(projectsActions.LOAD_PROJECTS),
       mergeMap(() =>
         this._projectsService.getProjects().pipe(
-          map(({ projects }) =>
+          map((projects) =>
             projectsActions.LOAD_PROJECTS_SUCCESS({ projects })
           ),
           catchError((err) =>
@@ -38,7 +38,7 @@ export class ProjectsEffects {
           map((response) => {
             showResponseModal('success', 'Proyecto creado exitosamente...');
             return projectsActions.ADD_PROJECT_SUCCESS({
-              project: response.projectSaved,
+              project: response,
             });
           }),
           catchError((err) => {
@@ -58,7 +58,7 @@ export class ProjectsEffects {
           map((response) => {
             showResponseModal('success', 'Proyecto eliminado exitosamente...');
             return projectsActions.DELETE_PROJECT_SUCCESS({
-              payload: response.project._id,
+              payload: response._id,
             });
           }),
           catchError((err) => {
@@ -76,9 +76,10 @@ export class ProjectsEffects {
       mergeMap(({ project }) =>
         this._projectsService.editProject(project.id, project).pipe(
           map((response) => {
+            console.log(response);
             showResponseModal('success', 'Proyecto editado exitosamente...');
             return projectsActions.UPDATE_PROJECT_SUCCESS({
-              project: response.projectUpdated,
+              project: response,
             });
           }),
           catchError((err) => {

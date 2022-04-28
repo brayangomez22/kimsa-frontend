@@ -59,7 +59,9 @@ export class ProjectsComponent {
       return this.validateForm();
     }
 
-    this.store.dispatch(actions.ADD_PROJECT(this.form.value));
+    const project = { ...this.form.value, createdAt: new Date() };
+
+    this.store.dispatch(actions.ADD_PROJECT(project));
     this.resetForm();
     this.closeModal();
   }
@@ -111,7 +113,7 @@ export class ProjectsComponent {
       entityEnglish: project.entityEnglish,
       descriptionSpanish: project.descriptionSpanish,
       descriptionEnglish: project.descriptionEnglish,
-      hasInfo: project.hasInfo,
+      additionalInformation: project.additionalInformation,
       image: '',
     });
   }
@@ -137,7 +139,7 @@ export class ProjectsComponent {
       entityEnglish: ['', Validators.required],
       descriptionSpanish: ['', Validators.required],
       descriptionEnglish: ['', Validators.required],
-      hasInfo: [''],
+      additionalInformation: [''],
       image: ['', Validators.required],
     });
   }
@@ -151,7 +153,7 @@ export class ProjectsComponent {
       entityEnglish: '',
       descriptionSpanish: '',
       descriptionEnglish: '',
-      hasInfo: '',
+      additionalInformation: '',
       image: '',
     });
   }

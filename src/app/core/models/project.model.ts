@@ -1,23 +1,14 @@
-export class Project {
+export interface Project {
   id?: string;
   titleSpanish?: string;
   titleEnglish?: string;
-  entitySpanish?: string;
-  entityEnglish?: string;
   descriptionSpanish?: string;
   descriptionEnglish?: string;
-  hasInfo?: string;
+  entitySpanish?: string;
+  entityEnglish?: string;
   image?: string;
-
-  constructor() {
-    (this.id = ''),
-      (this.titleSpanish = ''),
-      (this.titleEnglish = ''),
-      (this.entitySpanish = ''),
-      (this.entityEnglish = ''),
-      (this.descriptionSpanish = ''),
-      (this.descriptionEnglish = ''),
-      (this.hasInfo = ''),
-      (this.image = '');
-  }
+  hasInfo?: boolean;
+  additionalInformation: string;
+  isActive: boolean;
+  createdAt: Date;
 }

@@ -3,7 +3,7 @@ interface SocialsNetworksModel {
   url: string;
 }
 
-export class Partner {
+export interface Partner {
   id?: string;
   firstName?: string;
   lastName?: string;
@@ -13,16 +13,4 @@ export class Partner {
   descriptionEnglish?: string;
   socialsNetworks?: SocialsNetworksModel[];
   photo?: string;
-
-  constructor() {
-    (this.id = ''),
-      (this.firstName = ''),
-      (this.lastName = ''),
-      (this.rolSpanish = ''),
-      (this.rolEnglish = ''),
-      (this.descriptionSpanish = ''),
-      (this.descriptionEnglish = ''),
-      (this.socialsNetworks = []),
-      (this.photo = '');
-  }
 }

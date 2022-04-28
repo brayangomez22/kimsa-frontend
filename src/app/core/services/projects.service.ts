@@ -15,22 +15,19 @@ export class ProjectsService {
     const url = environment.apiUrl + RESOURCE_URL.createProject;
     const request = new FormData();
 
-    let hasInfo = null;
-
-    if (body.hasInfo !== '') {
-      hasInfo = body.hasInfo;
-    } else {
-      hasInfo = null;
-    }
-
     request.append('titleSpanish', body.titleSpanish);
     request.append('titleEnglish', body.titleEnglish);
     request.append('entitySpanish', body.entitySpanish);
     request.append('entityEnglish', body.entityEnglish);
     request.append('descriptionSpanish', body.descriptionSpanish);
     request.append('descriptionEnglish', body.descriptionEnglish);
-    request.append('hasInfo', hasInfo);
+
+    if (body.additionalInformation) {
+      request.append('additionalInformation', body.additionalInformation);
+    }
+
     request.append('image', body.image);
+    request.append('createdAt', body.createdAt);
 
     return this.http.postFile(url, request);
   }

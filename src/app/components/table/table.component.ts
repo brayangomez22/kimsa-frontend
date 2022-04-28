@@ -13,7 +13,7 @@ export class TableComponent {
   @Input() columns!: any[];
   @Output() deleteClicked: EventEmitter<string> = new EventEmitter();
   @Output() editClicked: EventEmitter<Project> = new EventEmitter();
-  @Output() editClickedPartner: EventEmitter<Project> = new EventEmitter();
+  @Output() editClickedPartner: EventEmitter<Partner> = new EventEmitter();
 
   public url: string = environment.apiUrl + '/images/';
 

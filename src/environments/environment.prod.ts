@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: `https://app-kimsa.herokuapp.com/api`,
+  // apiUrl: `https://kimsa-backend.azurewebsites.net/api`,
+  apiUrl: `http://localhost:3000/api`,
 };
