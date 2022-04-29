@@ -1,0 +1,53 @@
+<div class="images">
+  <app-navbar></app-navbar>
+
+  <div class="images__container">
+    <app-topbar></app-topbar>
+
+    <section class="images__content">
+      <div class="images__wrapper">
+        <div class="images__header">
+          <h2>Imagenes</h2>
+          <a (click)="openModal()" class="images__button"><i class="fas fa-plus"></i> Añadir imagen</a>
+        </div>
+
+        <app-table *ngIf="images.length >= 1" [columns]="['Foto', 'Eliminar']" [items]="images"
+          (deleteClicked)="handleDeleteClient($event)"></app-table>
+
+        <div class="images__wrapper-null" *ngIf="images.length === 0 && loaded">
+          <h3>Aún no has creado ninguna imagen</h3>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal__container">
+  <div class="modal__content">
+    <form [formGroup]="form">
+      <h2 class="modal__title">Añadir imagen</h2>
+
+      <div class="modal__input-container">
+        <input class="modal__input modal__input--image" (change)="extractImage($event)" type="file"
+          formControlName="link" #imageInput />
+        <div class="modal__upload">
+          <div class="modal__upload-button" (click)="imageInput.click()">
+            <i class="fas fa-upload"></i>
+            Cargar imagen
+          </div>
+          <figure class="modal__upload-figure">
+            <img class="modal__upload-image" [src]="imageSelected || 'assets/img/image-not-found.png'" alt="noImage" />
+          </figure>
+        </div>
+      </div>
+      <small class="modal__input-error" *ngIf="imageInvalid">La imagen es obligatoria</small>
+
+      <div class="modal__input-container">
+        <input class="modal__button" (click)="save()" type="submit" value="Crear" />
+      </div>
+    </form>
+
+    <a class="modal__close" (click)="closeModal()">
+      <img src="assets/img/cancel.png" alt="times-icon" /></a>
+  </div>
+</div>

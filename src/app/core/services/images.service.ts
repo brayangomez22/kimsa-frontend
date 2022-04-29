@@ -7,26 +7,27 @@ import { GeneralService } from './general.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AlliedsService {
-
-  constructor(private http: GeneralService) { }
+export class ImagesService {
+  constructor(private http: GeneralService) {}
 
   create(body: any): Observable<any> {
-    const url = environment.apiUrl + RESOURCE_URL.allieds;
+    const url = environment.apiUrl + RESOURCE_URL.images;
     const request = new FormData();
 
-    request.append('image', body.image);
+    request.append('link', body.payload.link);
+    request.append('typeImage', body.payload.typeImage);
+    request.append('createdAt', body.payload.createdAt);
 
     return this.http.postFile(url, request);
   }
 
   get(): Observable<any> {
-    const url = environment.apiUrl + RESOURCE_URL.allieds;
+    const url = environment.apiUrl + RESOURCE_URL.images;
     return this.http.get(url);
   }
 
   delete(id: any): Observable<any> {
-    const url = environment.apiUrl + RESOURCE_URL.deleteAllied(id);
+    const url = environment.apiUrl + RESOURCE_URL.deleteImage(id);
     return this.http.delete(url);
   }
 }

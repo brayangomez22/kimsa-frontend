@@ -17,12 +17,13 @@ export class PartnersService {
 
     request.append('firstName', body.firstName);
     request.append('lastName', body.lastName);
-    request.append('photo', body.photo);
+    request.append('image', body.image);
     request.append('rolSpanish', body.rolSpanish);
     request.append('rolEnglish', body.rolEnglish);
     request.append('descriptionSpanish', body.descriptionSpanish);
     request.append('descriptionEnglish', body.descriptionEnglish);
     request.append('socialsNetworks', body.socialsNetworks);
+    request.append('createdAt', body.createdAt);
 
     return this.http.postFile(url, request);
   }

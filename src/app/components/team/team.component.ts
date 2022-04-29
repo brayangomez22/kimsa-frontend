@@ -77,6 +77,7 @@ export class TeamComponent {
     const partner = {
       ...this.form.value,
       socialsNetworks: JSON.stringify(socialsNetworks),
+      createdAt: new Date(),
     };
 
     delete partner.firtsRedSocial;
@@ -90,11 +91,11 @@ export class TeamComponent {
 
   extractImage(event: any) {
     if (event.target.files && event.target.files[0]) {
-      this.form.value.photo = event.target.files[0];
+      this.form.value.image = event.target.files[0];
 
       const reader = new FileReader();
       reader.onload = (e) => (this.imageSelected = reader.result);
-      reader.readAsDataURL(this.form.value.photo);
+      reader.readAsDataURL(this.form.value.image);
     }
   }
 
@@ -138,7 +139,7 @@ export class TeamComponent {
       firtsRedSocial: partner.socialsNetworks[0].url || '',
       secondRedSocial: partner.socialsNetworks[1].url || '',
       thirdRedSocial: partner.socialsNetworks[2].url || '',
-      photo: '',
+      image: '',
     });
   }
 
@@ -163,7 +164,7 @@ export class TeamComponent {
     const partnerEdited = {
       ...partner,
       socialsNetworks: JSON.stringify(socialsNetworks),
-      photo: this.currentPartnerToEdit.photo,
+      image: this.currentPartnerToEdit.image,
     };
 
     delete partnerEdited.firtsRedSocial;
@@ -187,7 +188,7 @@ export class TeamComponent {
       firtsRedSocial: [''],
       secondRedSocial: [''],
       thirdRedSocial: [''],
-      photo: ['', Validators.required],
+      image: ['', Validators.required],
     });
   }
 
@@ -203,7 +204,7 @@ export class TeamComponent {
       firtsRedSocial: '',
       secondRedSocial: '',
       thirdRedSocial: '',
-      photo: '',
+      image: '',
     });
   }
 

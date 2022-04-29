@@ -14,19 +14,19 @@ export class PartnersEffects {
     private _partnersService: PartnersService
   ) {}
 
-  loadProjects$ = createEffect(() =>
+  loadPartners$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.LOAD_PARTNERS),
       mergeMap(() =>
         this._partnersService.getPartners().pipe(
-          map(({ partners }) => actions.LOAD_PARTNERS_SUCCESS({ partners })),
+          map((partners) => actions.LOAD_PARTNERS_SUCCESS({ partners })),
           catchError((err) => of(actions.LOAD_PARTNERS_ERROR({ payload: err })))
         )
       )
     )
   );
 
-  addProject$ = createEffect(() =>
+  addPartner$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.ADD_PARTNER),
       mergeMap((newPartner) =>
@@ -34,7 +34,7 @@ export class PartnersEffects {
           map((response) => {
             showResponseModal('success', 'Socio creado exitosamente...');
             return actions.ADD_PARTNER_SUCCESS({
-              partner: response.partnerSaved,
+              partner: response,
             });
           }),
           catchError((err) => {
@@ -46,7 +46,7 @@ export class PartnersEffects {
     )
   );
 
-  deleteroject$ = createEffect(() =>
+  deletePartner$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.DELETE_PARTNER),
       mergeMap((partnerId) =>
@@ -54,7 +54,7 @@ export class PartnersEffects {
           map((response) => {
             showResponseModal('success', 'Socio eliminado exitosamente...');
             return actions.DELETE_PARTNER_SUCCESS({
-              payload: response.partner._id,
+              payload: response._id,
             });
           }),
           catchError((err) => {
@@ -74,7 +74,7 @@ export class PartnersEffects {
           map((response) => {
             showResponseModal('success', 'Socio editado exitosamente...');
             return actions.UPDATE_PARTNER_SUCCESS({
-              partner: response.partnerUpdated,
+              partner: response,
             });
           }),
           catchError((err) => {

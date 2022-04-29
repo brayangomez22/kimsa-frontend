@@ -12,5 +12,9 @@ export interface Partner {
   descriptionSpanish?: string;
   descriptionEnglish?: string;
   socialsNetworks?: SocialsNetworksModel[];
-  photo?: string;
+  email?: string;
+  phone?: string;
+  image?: string;
+  isActive: boolean;
+  createdAt: Date;
 }

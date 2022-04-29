@@ -76,7 +76,6 @@ export class ProjectsEffects {
       mergeMap(({ project }) =>
         this._projectsService.editProject(project.id, project).pipe(
           map((response) => {
-            console.log(response);
             showResponseModal('success', 'Proyecto editado exitosamente...');
             return projectsActions.UPDATE_PROJECT_SUCCESS({
               project: response,

@@ -1,11 +1,9 @@
 import { ProjectsEffects } from './projects.effects';
 import { PartnersEffects } from './partners.effects';
-import { AlliedsEffect } from './allieds.effect';
-import { ClientsEffect } from './clients.effect';
+import { ImagesEffect } from './images.effect';
 
 export const EffectsArray: any[] = [
   ProjectsEffects,
   PartnersEffects,
-  AlliedsEffect,
-  ClientsEffect,
+  ImagesEffect,
 ];

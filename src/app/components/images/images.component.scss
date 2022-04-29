@@ -1,4 +1,4 @@
-.allieds {
+.images {
   position: relative;
   width: 100%;
 
@@ -27,10 +27,8 @@
     position: relative;
     min-height: 530px;
     height: 100%;
-    background-image: linear-gradient(
-      rgba(56, 139, 253, 0.1),
-      rgba(56, 139, 253, 0.1)
-    );
+    background-image: linear-gradient(rgba(56, 139, 253, 0.1),
+        rgba(56, 139, 253, 0.1));
     border-color: rgba(56, 139, 253, 0.1);
     color: #fff;
     padding: 0 30px;
@@ -106,8 +104,8 @@
     }
   }
 
-  &__input:focus ~ &__label,
-  &__input:valid ~ &__label {
+  &__input:focus~&__label,
+  &__input:valid~&__label {
     color: #036b79;
     font-size: 12px;
     transform: translateY(-20px);
@@ -203,7 +201,7 @@
 }
 
 @media (max-width: 992px) {
-  .allieds {
+  .images {
     &__container {
       width: 100%;
       left: 0;
@@ -230,7 +228,7 @@
 }
 
 @media (max-width: 480px) {
-  .allieds {
+  .images {
     &__title {
       font-weight: 600;
       font-size: 18px;

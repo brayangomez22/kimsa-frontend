@@ -3,15 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducers';
 import Swal from 'sweetalert2';
-import actions from '../../store/actions/allieds.actions';
+import actions from '../../store/actions/images.actions';
 
 @Component({
-  selector: 'app-allieds',
-  templateUrl: './allieds.component.html',
-  styleUrls: ['./allieds.component.scss']
+  selector: 'app-images',
+  templateUrl: './images.component.html',
+  styleUrls: ['./images.component.scss'],
 })
-export class AlliedsComponent {
-  public allieds: any[] = [];
+export class ImagesComponent {
+  public images: any[] = [];
   public form!: FormGroup;
   public imageSelected!: string | ArrayBuffer | null;
   public loaded: boolean = false;
@@ -26,16 +26,16 @@ export class AlliedsComponent {
     private store: Store<AppState>
   ) {
     this.createForm();
-    this.getAllieds();
+    this.getImages();
   }
 
   extractImage(event: any) {
     if (event.target.files && event.target.files[0]) {
-      this.form.value.image = event.target.files[0];
+      this.form.value.link = event.target.files[0];
 
       const reader = new FileReader();
       reader.onload = (e) => (this.imageSelected = reader.result);
-      reader.readAsDataURL(this.form.value.image);
+      reader.readAsDataURL(this.form.value.link);
     }
   }
 
@@ -44,7 +44,13 @@ export class AlliedsComponent {
       return this.validateForm();
     }
 
-    this.store.dispatch(actions.ADD_ALLIED(this.form.value));
+    const image = {
+      ...this.form.value,
+      typeImage: 'CLIENTS',
+      createdAt: new Date(),
+    };
+
+    this.store.dispatch(actions.ADD_IMAGE({ payload: image }));
     this.closeModal();
   }
 
@@ -61,7 +67,7 @@ export class AlliedsComponent {
     this.resetForm();
   }
 
-  handleDeleteAllied(id: string): void {
+  handleDeleteClient(id: string): void {
     Swal.fire({
       title: '¿Estás seguro?',
       text: '¡No podrás revertir esto!',
@@ -72,22 +78,22 @@ export class AlliedsComponent {
       confirmButtonText: '¡Sí, eliminar!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.deleteAllied(id);
+        this.deleteClient(id);
       }
     });
   }
 
-  private deleteAllied(id: any): void {
-    this.store.dispatch(actions.DELETE_ALLIED({ payload: id }));
+  private deleteClient(id: any): void {
+    this.store.dispatch(actions.DELETE_IMAGE({ payload: id }));
   }
 
   private createForm(): void {
-    this.form = this.fb.group({ image: ['', Validators.required] });
+    this.form = this.fb.group({ link: ['', Validators.required] });
   }
 
   private resetForm(): void {
     this.imageSelected = null;
-    this.form.reset({ image: '' });
+    this.form.reset({ link: '' });
   }
 
   private validateForm(): void {
@@ -100,11 +106,11 @@ export class AlliedsComponent {
     });
   }
 
-  private getAllieds(): void {
-    this.store.dispatch(actions.LOAD_ALLIEDS());
+  private getImages(): void {
+    this.store.dispatch(actions.LOAD_IMAGES());
 
-    this.store.select('allieds').subscribe(({ allieds, loaded, error }) => {      
-      this.allieds = allieds;
+    this.store.select('images').subscribe(({ images, loaded, error }) => {
+      this.images = images;
 
       this.loaded = loaded;
       this.error = error;
