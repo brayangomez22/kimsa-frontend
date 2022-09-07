@@ -164,7 +164,7 @@ export class TeamComponent {
     const partnerEdited = {
       ...partner,
       socialsNetworks: JSON.stringify(socialsNetworks),
-      image: this.currentPartnerToEdit.image,
+      image: partner.image ? partner.image : this.currentPartnerToEdit.image,
     };
 
     delete partnerEdited.firtsRedSocial;

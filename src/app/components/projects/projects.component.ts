@@ -122,7 +122,7 @@ export class ProjectsComponent {
     const project = this.form.value;
     const projectEdited = {
       ...project,
-      image: this.currentProjectToEdit.image,
+      image: project.image ? project.image : this.currentProjectToEdit.image,
     };
 
     this.store.dispatch(actions.UPDATE_PROJECT({ project: projectEdited }));

@@ -32,4 +32,8 @@ export class GeneralService {
   edit(url: string, body: any) {
     return this.http.put(url, body, { headers: this.headers });
   }
+
+  editFile(url: string, body: any) {
+    return this.http.post(url, body, { headers: this.headersFile });
+  }
 }

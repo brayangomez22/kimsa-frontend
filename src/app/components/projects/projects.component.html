@@ -134,14 +134,18 @@
 
       <div>
         <div class="modal__input-container">
-          <input class="modal__input" type="text" formControlName="additionalInformation" />
+          <input
+            class="modal__input"
+            type="text"
+            formControlName="additionalInformation"
+          />
           <span class="modal__label"
             >Link de información adicional (opcional)</span
           >
         </div>
       </div>
 
-      <div *ngIf="!isEditModeEnabled">
+      <div>
         <div class="modal__input-container">
           <input
             class="modal__input modal__input--image"
@@ -155,7 +159,7 @@
               <i class="fas fa-upload"></i>
               Cargar imagen
             </div>
-            <figure class="modal__upload-figure">
+            <figure *ngIf="!isEditModeEnabled" class="modal__upload-figure">
               <img
                 class="modal__upload-image"
                 [src]="imageSelected || 'assets/img/image-not-found.png'"

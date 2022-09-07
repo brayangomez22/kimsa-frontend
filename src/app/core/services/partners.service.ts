@@ -38,8 +38,19 @@ export class PartnersService {
     return this.http.delete(url);
   }
 
-  editPartner(id: any, partner: Partner): Observable<any> {
+  editPartner(id: any, partner: any): Observable<any> {
     const url = environment.apiUrl + RESOURCE_URL.editPartner(id);
-    return this.http.edit(url, partner);
+    const request = new FormData();
+
+    request.append('firstName', partner?.firstName);
+    request.append('lastName', partner?.lastName);
+    request.append('image', partner?.image);
+    request.append('rolSpanish', partner?.rolSpanish);
+    request.append('rolEnglish', partner?.rolEnglish);
+    request.append('descriptionSpanish', partner?.descriptionSpanish);
+    request.append('descriptionEnglish', partner?.descriptionEnglish);
+    request.append('socialsNetworks', partner?.socialsNetworks);
+
+    return this.http.editFile(url, request);
   }
 }

@@ -42,8 +42,22 @@ export class ProjectsService {
     return this.http.delete(url);
   }
 
-  editProject(id: any, project: Project): Observable<any> {
+  editProject(id: any, project: any): Observable<any> {
     const url = environment.apiUrl + RESOURCE_URL.editProject(id);
-    return this.http.edit(url, project);
+    const request = new FormData();
+
+    request.append('titleSpanish', project?.titleSpanish);
+    request.append('titleEnglish', project?.titleEnglish);
+    request.append('entitySpanish', project?.entitySpanish);
+    request.append('entityEnglish', project?.entityEnglish);
+    request.append('descriptionSpanish', project?.descriptionSpanish);
+    request.append('descriptionEnglish', project?.descriptionEnglish);
+
+    if (project?.additionalInformation) {
+      request.append('additionalInformation', project?.additionalInformation);
+    }
+
+    request.append('image', project?.image);
+    return this.http.editFile(url, request);
   }
 }
